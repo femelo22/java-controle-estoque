@@ -17,7 +17,7 @@ public class Pessoa {
 	private String nome;
 	
 	@Column
-	private String emai;
+	private String email;
 	
 	@Column
 	private String cep;
@@ -44,11 +44,11 @@ public class Pessoa {
 		
 	}
 
-	public Pessoa(String nome, String emai, String cep, String numero, String complemento, String rua,
+	public Pessoa(String nome, String email, String cep, String numero, String complemento, String rua,
 			String bairro, String cidade, String estado) {
 		super();
 		this.nome = nome;
-		this.emai = emai;
+		this.email = email;
 		this.cep = cep;
 		this.numero = numero;
 		this.complemento = complemento;
@@ -74,12 +74,12 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getEmai() {
-		return emai;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmai(String emai) {
-		this.emai = emai;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCep() {
