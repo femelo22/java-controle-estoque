@@ -6,26 +6,43 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "TB_FORNECEDOR")
 public class Fornecedor extends Pessoa {
 
 	@Column
-	private String cpnj;
+	private String cnpj;
 	
 	@OneToMany(mappedBy = "fornecedor")
+	@JsonIgnore
 	private List<Produto> produtos;
 
-	public Fornecedor(String cpnj) {
+	public Fornecedor() {
+	}
+	
+
+	public Fornecedor(String cnpj) {
 		super();
-		this.cpnj = cpnj;
+		this.cnpj = cnpj;
 	}
 
-	public String getCpnj() {
-		return cpnj;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setCpnj(String cpnj) {
-		this.cpnj = cpnj;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+	
+	
 	
 }

@@ -15,31 +15,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import lf.melo.com.entities.Usuario;
-import lf.melo.com.services.UsuarioService;
+import lf.melo.com.entities.Fornecedor;
+import lf.melo.com.services.FornecedorService;
 
 @RestController
-@RequestMapping("/users")
-public class UsuarioController {
+@RequestMapping("/suppliers")
+public class FornecedorController {
 	
 	@Autowired
-	private UsuarioService service;
+	private FornecedorService service;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
-		return ResponseEntity.ok().body(service.create(usuario));
+	public ResponseEntity<Fornecedor> create(@RequestBody Fornecedor fornecedor) {
+		return ResponseEntity.ok().body(service.create(fornecedor));
 	}
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> findAll() {
+	public ResponseEntity<List<Fornecedor>> findAll() {
 		return ResponseEntity.ok().body(service.findAll());
 	}
 	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> findById(@PathVariable Long id) {
+	public ResponseEntity<Fornecedor> findById(@PathVariable Long id) {
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
@@ -51,9 +51,9 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity update(@RequestBody Usuario usuario , @PathVariable Long id) {
-		Usuario usuarioAtualizado = service.update(usuario, id);
-		return ResponseEntity.ok().body(usuarioAtualizado);
+	public ResponseEntity update(@RequestBody Fornecedor fornecedor , @PathVariable Long id) {
+		Fornecedor fornAtualizado = service.update(fornecedor, id);
+		return ResponseEntity.ok().body(fornAtualizado);
 	}
 	
 }
