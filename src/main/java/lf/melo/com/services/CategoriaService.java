@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lf.melo.com.entities.Categoria;
+import lf.melo.com.errors.NotFoundError;
 import lf.melo.com.repositories.CategoriaRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class CategoriaService {
 	}
 
 	public Categoria findById(Long id) {
-		return repository.findById(id).get();
+		return repository.findById(id).orElseThrow(() -> new NotFoundError("Categoria não encontrada!"));
 	}
 
 	public List<Categoria> findAll() {

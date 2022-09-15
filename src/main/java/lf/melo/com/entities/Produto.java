@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "TB_PRODUTO")
 public class Produto {
 	
@@ -41,25 +43,32 @@ public class Produto {
 	private Fornecedor fornecedor;
 	
 	@ManyToMany(mappedBy = "produtos")
+	@JsonIgnore
 	private List<Venda> vendas;
+	
+	@JsonIgnore
+	private Long idFornecedor;
+	
+	@JsonIgnore
+	private Long idCategoria;
 
 	
 	public Produto() {
 		
 	}
 
-	public Produto(Long id, String nome, BigDecimal preco, int quantidade, int estoqueMin, Categoria categoria,
-			Fornecedor fornecedor) {
+
+	public Produto(String nome, BigDecimal preco, int quantidade, int estoqueMin, List<Venda> vendas, Long idFornecedor,
+			Long idCategoria) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.estoqueMin = estoqueMin;
-		this.categoria = categoria;
-		this.fornecedor = fornecedor;
+		this.vendas = vendas;
+		this.idFornecedor = idFornecedor;
+		this.idCategoria = idCategoria;
 	}
-	
 
 	public Long getId() {
 		return id;
@@ -116,8 +125,36 @@ public class Produto {
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-	
-	
-	
+
+
+	public List<Venda> getVendas() {
+		return vendas;
+	}
+
+
+	public void setVendas(List<Venda> vendas) {
+		this.vendas = vendas;
+	}
+
+
+	public Long getIdFornecedor() {
+		return idFornecedor;
+	}
+
+
+	public void setIdFornecedor(Long idFornecedor) {
+		this.idFornecedor = idFornecedor;
+	}
+
+
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+
+
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
 
 }
