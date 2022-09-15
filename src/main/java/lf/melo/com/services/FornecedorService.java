@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lf.melo.com.entities.Fornecedor;
+import lf.melo.com.errors.NotFoundError;
 import lf.melo.com.repositories.FornecedorRepository;
 
 @Service
@@ -20,7 +21,7 @@ public class FornecedorService {
 	}
 	
 	public Fornecedor findById(Long id) {
-		return repository.findById(id).get();
+		return repository.findById(id).orElseThrow(() -> new NotFoundError("Fornecedor não encontrado!"));
 	}
 	
 	

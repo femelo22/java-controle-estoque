@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lf.melo.com.entities.Categoria;
 import lf.melo.com.entities.Fornecedor;
 import lf.melo.com.entities.Produto;
+import lf.melo.com.errors.NotFoundError;
 import lf.melo.com.repositories.ProdutoRepository;
 
 @Service
@@ -40,7 +41,7 @@ public class ProdutoService {
 	}
 	
 	public Produto findById(Long id) {
-		return repository.findById(id).get();
+		return repository.findById(id).orElseThrow(() -> new NotFoundError("Produto não encontrado!"));
 	}
 	
 	public void delete(Long id) {

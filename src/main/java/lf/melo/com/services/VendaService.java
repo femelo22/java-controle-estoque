@@ -12,6 +12,7 @@ import lf.melo.com.entities.Produto;
 import lf.melo.com.entities.Usuario;
 import lf.melo.com.entities.Venda;
 import lf.melo.com.entities.dtos.VendaDTO;
+import lf.melo.com.errors.NotFoundError;
 import lf.melo.com.repositories.VendaRepository;
 
 @Service
@@ -31,7 +32,7 @@ public class VendaService {
 	}
 	
 	public Venda findById(Long id) {
-		return repository.findById(id).get();
+		return repository.findById(id).orElseThrow(() -> new NotFoundError("Venda não encontrada!"));
 	}
 	
 	

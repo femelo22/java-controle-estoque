@@ -57,7 +57,6 @@ public class Produto {
 		
 	}
 
-
 	public Produto(String nome, BigDecimal preco, int quantidade, int estoqueMin, List<Venda> vendas, Long idFornecedor,
 			Long idCategoria) {
 		super();
@@ -155,6 +154,5 @@ public class Produto {
 	public void setIdCategoria(Long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-
 
 }
